@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="imgbeddings",
     packages=["imgbeddings"],  # this must be the same as the name above
-    version="0.1.0",
+    version="0.1.1",
     description="A Python package to generate image embeddings with CLIP without PyTorch/TensorFlow",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",

@@ -4,7 +4,7 @@ import random
 import itertools
 
 from transformers import CLIPProcessor
-from huggingface_hub import hf_hub_url, cached_download
+from huggingface_hub import hf_hub_url, hf_hub_download
 from onnxruntime import InferenceSession
 import numpy as np
 from tqdm.auto import tqdm
@@ -38,7 +38,7 @@ class imgbeddings:
             config_file_url = hf_hub_url(
                 repo_id="minimaxir/imgbeddings", filename=model_filename
             )
-            self.model_path = cached_download(
+            self.model_path = hf_hub_download(
                 config_file_url, force_filename=model_filename
             )
 
@@ -79,7 +79,7 @@ class imgbeddings:
             def batch(iterable, n=1):
                 length = len(iterable)
                 for ndx in range(0, length, n):
-                    yield iterable[ndx : min(ndx + n, length)]
+                    yield iterable[ndx: min(ndx + n, length)]
 
             embeddings = []
             pbar = tqdm(total=len(inputs), smoothing=0)
